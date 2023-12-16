@@ -15,6 +15,7 @@ public class CarDTO implements Serializable {
 	private String model;
 	private String plate;
 	private Long clientId;
+	private String clientName;
 	
 	private List<WorkDTO> works = new ArrayList<>();
 	
@@ -37,6 +38,7 @@ public class CarDTO implements Serializable {
 		model = entity.getModel();
 		plate = entity.getPlate();
 		clientId = entity.getClient().getId();
+		clientName = entity.getClient().getName();
 		entity.getWorks().forEach(work -> this.works.add(new WorkDTO(work)));
 	}
 
@@ -78,6 +80,16 @@ public class CarDTO implements Serializable {
 
 	public void setClientId(Long clientId) {
 		this.clientId = clientId;
+	}
+	
+	
+	public String getClientName() {
+		return clientName;
+	}
+
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
 	}
 
 
