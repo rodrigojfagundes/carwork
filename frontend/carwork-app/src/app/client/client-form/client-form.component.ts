@@ -10,10 +10,19 @@ export class ClientFormComponent implements OnInit {
 
 
 client: Client;
+name: string = 'Batman';
 
-  constructor() { }
+  constructor() {
+  this.client = new Client();
+  this.client.name = 'Batman II';
+   }
 
   ngOnInit(): void {
   }
+
+clicar(){
+    console.log('clicked');
+}
+
 
 }
