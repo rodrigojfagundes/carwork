@@ -11,24 +11,28 @@ import { ClientModule } from './client/client.module';
 import { ClientService } from './client.service';
 import { CarModule } from './car/car.module';
 import { CarService } from './car.service';
+import { WorkModule } from './work/work.module';  
+import { WorkService } from './work.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    TemplateModule,
-    ClientModule,
-    CarModule
-  ],
-  providers: [
-  ClientService,
-  CarService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        TemplateModule,
+        ClientModule,
+        CarModule,
+        WorkModule
+    ],
+    providers: [
+        ClientService,
+        CarService,
+        WorkService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

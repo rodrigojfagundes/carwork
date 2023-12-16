@@ -1,0 +1,41 @@
+<h1 class="mt-4">Work</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-bitem active">Consult</li>
+</ol>
+<div class="container">
+    <form #consultForm="ngForm" (submit)="Consult()">
+
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <button type="button" routerLink="/work-form" class="btn btn-warning ml-1">
+                    <i class="btn btn-warning ml-1">
+                        <i class="fa fa-plus"> </i> New</i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <br />
+    <div class="row">
+        <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{ message }}
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Car</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let work of works">
+                <td>{{ work.carModel }}</td>
+                <td>{{ work.description }}</td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

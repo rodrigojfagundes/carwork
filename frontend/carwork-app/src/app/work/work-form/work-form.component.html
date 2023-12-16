@@ -1,0 +1,60 @@
+<h1 class="mt-4">Work</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrum-bitem active"> New</li>
+</ol>
+
+<div class="container">
+    <form #form="ngForm" (submit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-md12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Work save/update with success
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Car: </label>
+                    <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="work.carId">
+                        <option value="">Select ...</option>
+                        <option *ngFor="let car of cars" [ngValue]="car.id">
+                            {{ car.model }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Description: </label>
+                    <input class="form-control" [(ngModel)]=work.description type="text" name="description"
+                        id="inputDescription">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save">
+                    </i> Save
+                </button>
+
+                <button type="button" routerLink="/work-list" class="btn btn-danger ml-1">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Back
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+
+    </form>
