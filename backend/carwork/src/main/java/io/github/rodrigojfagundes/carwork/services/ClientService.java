@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,8 @@ import io.github.rodrigojfagundes.carwork.services.exceptions.ResourceNotFoundEx
 @Service
 public class ClientService {
 	
-	
-	
+	@Autowired
 	private ClientRepository repository;
-	
 	
 	@Transactional(readOnly = true)
 	public List<ClientDTO> findAll(){
@@ -46,6 +45,8 @@ public class ClientService {
 		client.setName(dto.getName());
 		client.setCpf(dto.getCpf());
 		client.setCity(dto.getCity());
+		
+		client = repository.save(client);
 		
 		return new ClientDTO(client);
 	}
