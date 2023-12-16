@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import io.github.rodrigojfagundes.carwork.dto.RoleDTO;
 import io.github.rodrigojfagundes.carwork.dto.UserDTO;
-import io.github.rodrigojfagundes.carwork.dto.UserInserDTO;
+import io.github.rodrigojfagundes.carwork.dto.UserInsertDTO;
 import io.github.rodrigojfagundes.carwork.dto.UserUpdateDTO;
 import io.github.rodrigojfagundes.carwork.entities.Role;
 import io.github.rodrigojfagundes.carwork.entities.User;
@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
 	}
 	
 	@Transactional
-	public UserDTO insert(UserInserDTO dto) {
+	public UserDTO insert(UserInsertDTO dto) {
 		User user = new User();
 		
 		copyDtoToEntity(dto, user);
