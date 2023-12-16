@@ -23,7 +23,7 @@
                     <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="work.carId">
                         <option value="">Select ...</option>
                         <option *ngFor="let car of cars" [ngValue]="car.id">
-                            {{ car.model }}
+                            {{ car.plate }}
                         </option>
                     </select>
                 </div>

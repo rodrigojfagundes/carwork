@@ -26,12 +26,16 @@
                     <tr>
                         <th>Car</th>
                         <th>Description</th>
+                        <th>ClientName</th>
+                        <th>CarPlate</th>
                     </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let work of works">
                 <td>{{ work.carModel }}</td>
                 <td>{{ work.description }}</td>
+                <td>{{ work.clientName }}</td>
+                <td>{{ work.carPlate }}</td>
                 </tr>
                 
                 </tbody>
