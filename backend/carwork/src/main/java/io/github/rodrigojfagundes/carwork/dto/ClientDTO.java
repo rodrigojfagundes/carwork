@@ -1,6 +1,8 @@
 package io.github.rodrigojfagundes.carwork.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.github.rodrigojfagundes.carwork.entities.Client;
 
@@ -13,6 +15,7 @@ public class ClientDTO implements Serializable {
 	private String cpf;
 	private String city;
 	
+	private List<CarDTO> cars = new ArrayList<>();
 	
 	public ClientDTO() {
 		
@@ -32,6 +35,7 @@ public class ClientDTO implements Serializable {
 		name = entity.getName();
 		cpf = entity.getCpf();
 		city = entity.getCity();
+		entity.getCars().forEach(car -> this.cars.add(new CarDTO(car)));
 	}
 	
 	
@@ -74,6 +78,10 @@ public class ClientDTO implements Serializable {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+	
+	public List<CarDTO> getCars(){
+		return cars;
 	}
 	
 	

@@ -62,12 +62,15 @@ public class WorkService {
 	@Transactional
 	public WorkDTO update (Long id, WorkDTO dto) {
 		try {
-			Work work = new Work();
+			
+			Work work = repository.getOne(id);
 			
 			Car car = carRepository.getOne(dto.getCarId());
 			
 			work.setCar(car);
 			work.setDescription(dto.getDescription());
+			
+			
 			
 			return new WorkDTO(work);
 			

@@ -49,7 +49,7 @@ public class WorkResource {
 	}
 	
 	
-	@PutMapping
+	@PutMapping(value = "/{id}")
 	public ResponseEntity<WorkDTO> update (@PathVariable Long id, @RequestBody WorkDTO dto) {
 		WorkDTO newDTO = service.update(id, dto);
 		return ResponseEntity.ok().body(newDTO);
