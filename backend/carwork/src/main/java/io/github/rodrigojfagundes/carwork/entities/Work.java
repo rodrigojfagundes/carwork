@@ -25,6 +25,11 @@ public class Work implements Serializable{
 	private String description;
 	
 	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	
+	@ManyToOne
 	@JoinColumn(name = "car_id")
 	private Car car;
 	
@@ -32,9 +37,10 @@ public class Work implements Serializable{
 		
 	}
 
-	public Work(Long id, String description, Car car) {
+	public Work(Long id, String description, User user, Car car) {
 		this.id = id;
 		this.description = description;
+		this.user = user;
 		this.car = car;
 	}
 
@@ -53,6 +59,15 @@ public class Work implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 
 	public Car getCar() {
 		return car;

@@ -2,6 +2,8 @@ package io.github.rodrigojfagundes.carwork.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -49,7 +51,7 @@ public class CarResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<CarDTO> insert (@RequestBody CarDTO dto) {
+	public ResponseEntity<CarDTO> insert (@Valid @RequestBody CarDTO dto) {
 		CarDTO newDTO = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(newDTO.getId()).toUri();
@@ -58,7 +60,7 @@ public class CarResource {
 	
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CarDTO> update (@PathVariable Long id, @RequestBody CarDTO dto){
+	public ResponseEntity<CarDTO> update (@PathVariable Long id, @Valid @RequestBody CarDTO dto){
 		CarDTO newDTO = service.update(id, dto);
 		return ResponseEntity.ok().body(newDTO);
 	}

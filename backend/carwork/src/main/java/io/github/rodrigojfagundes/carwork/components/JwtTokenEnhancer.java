@@ -3,6 +3,7 @@ package io.github.rodrigojfagundes.carwork.components;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -15,6 +16,7 @@ import io.github.rodrigojfagundes.carwork.repositories.UserRepository;
 @Component
 public class JwtTokenEnhancer implements TokenEnhancer {
 	
+	@Autowired
 	private UserRepository userRepository;
 	
 	

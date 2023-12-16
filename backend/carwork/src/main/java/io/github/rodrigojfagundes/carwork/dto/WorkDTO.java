@@ -12,13 +12,16 @@ public class WorkDTO implements Serializable {
 	private String description;
 	private Long carId;
 	
+	private UserDTO user;
+	
 	public WorkDTO() {
 		
 	}
 
-	public WorkDTO(Long id, String description, Long carId) {
+	public WorkDTO(Long id, String description, UserDTO user, Long carId) {
 		this.id = id;
 		this.description = description;
+		this.user = user;
 		this.carId = carId;
 	}
 	
@@ -27,6 +30,7 @@ public class WorkDTO implements Serializable {
 	public WorkDTO(Work entity) {
 		id = entity.getId();
 		description = entity.getDescription();
+		user = new UserDTO(entity.getUser());
 		carId = entity.getCar().getId();
 	}
 
@@ -45,7 +49,15 @@ public class WorkDTO implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
+	public UserDTO getUser() {
+		return user;
+	}
+	
+	public void setUser(UserDTO user) {
+		this.user = user;
+	}
+	
 	public Long getCarId() {
 		return carId;
 	}

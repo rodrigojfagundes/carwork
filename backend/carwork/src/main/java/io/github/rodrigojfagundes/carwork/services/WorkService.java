@@ -9,13 +9,17 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.github.rodrigojfagundes.carwork.dto.WorkDTO;
 import io.github.rodrigojfagundes.carwork.entities.Car;
+import io.github.rodrigojfagundes.carwork.entities.User;
 import io.github.rodrigojfagundes.carwork.entities.Work;
 import io.github.rodrigojfagundes.carwork.repositories.CarRepository;
+import io.github.rodrigojfagundes.carwork.repositories.UserRepository;
 import io.github.rodrigojfagundes.carwork.repositories.WorkRepository;
 import io.github.rodrigojfagundes.carwork.services.exceptions.DatabaseException;
 import io.github.rodrigojfagundes.carwork.services.exceptions.ResourceNotFoundException;
@@ -29,6 +33,8 @@ public class WorkService {
 	@Autowired
 	private CarRepository carRepository;
 	
+	@Autowired
+	private UserRepository userRepository;
 	
 	@Transactional(readOnly = true)
 	public List<WorkDTO> findAll() {
@@ -49,8 +55,15 @@ public class WorkService {
 	public WorkDTO insert(WorkDTO dto) {
 		Work work = new Work();
 		
+		Authentication authentication = SecurityContextHolder.
+				getContext().getAuthentication();
+		
+		User userAuthenticated = userRepository.
+				findByUsername(authentication.getName());
+		
 		Car car = carRepository.getOne(dto.getCarId());
 		
+		work.setUser(userAuthenticated);
 		work.setCar(car);
 		work.setDescription(dto.getDescription());
 		
@@ -65,8 +78,15 @@ public class WorkService {
 			
 			Work work = repository.getOne(id);
 			
-			Car car = carRepository.getOne(dto.getCarId());
+			Authentication authentication = SecurityContextHolder.
+					getContext().getAuthentication();
 			
+			User userAuthenticated = userRepository.
+					findByUsername(authentication.getName());
+			
+			work.setUser(userAuthenticated);
+			Car car = carRepository.getOne(dto.getCarId());
+
 			work.setCar(car);
 			work.setDescription(dto.getDescription());
 			

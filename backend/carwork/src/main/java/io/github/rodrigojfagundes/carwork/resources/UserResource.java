@@ -17,51 +17,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import io.github.rodrigojfagundes.carwork.dto.ClientDTO;
-import io.github.rodrigojfagundes.carwork.services.ClientService;
-
+import io.github.rodrigojfagundes.carwork.dto.UserDTO;
+import io.github.rodrigojfagundes.carwork.dto.UserInsertDTO;
+import io.github.rodrigojfagundes.carwork.dto.UserUpdateDTO;
+import io.github.rodrigojfagundes.carwork.services.UserService;
 
 @RestController
-@RequestMapping(value = "/clients")
-public class ClientResource {
-	
+@RequestMapping(value = "/users")
+public class UserResource {
 	
 	@Autowired
-	private ClientService service;
-	
+	private UserService service;
 	
 	@GetMapping
-	public ResponseEntity<List<ClientDTO>> findAll() {
-		List<ClientDTO> clients = service.findAll();
-		return ResponseEntity.ok().body(clients);
+	private ResponseEntity<List<UserDTO>> findAll() {
+		List<UserDTO> users = service.findAll();
+		return ResponseEntity.ok().body(users);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
-		ClientDTO client = service.findById(id);
-		return ResponseEntity.ok().body(client);
+	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
+		UserDTO user = service.findById(id);
+		return ResponseEntity.ok().body(user);
 	}
 	
-	
 	@PostMapping
-	public ResponseEntity<ClientDTO> insert (@Valid @RequestBody ClientDTO dto) {
-		ClientDTO newDTO = service.insert(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(newDTO.getId()).toUri();
+	public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserInsertDTO userDTO) {
+		UserDTO newDTO = service.insert(userDTO);
+		
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
+				path("/{id}").buildAndExpand(newDTO.getId()).toUri();
+		
 		return ResponseEntity.created(uri).body(newDTO);
 	}
 	
+	@PutMapping
+	public ResponseEntity<UserDTO> update (@PathVariable Long id, @Valid 
+			@RequestBody UserUpdateDTO userDTO) {
 	
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<ClientDTO> update (@PathVariable Long id, @Valid @RequestBody ClientDTO dto){
-		ClientDTO newDTO = service.update(id, dto);
+		UserDTO newDTO = service.update(id, userDTO);
 		return ResponseEntity.ok().body(newDTO);
 	}
 	
-	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<ClientDTO> delete (@PathVariable Long id) {
+	public ResponseEntity<UserDTO> delete (@PathVariable Long id){
 		service.delete(id);
+		
 		return ResponseEntity.noContent().build();
 	}
 	

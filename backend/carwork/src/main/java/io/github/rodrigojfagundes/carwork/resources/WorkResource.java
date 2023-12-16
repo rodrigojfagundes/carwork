@@ -3,6 +3,8 @@ package io.github.rodrigojfagundes.carwork.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,7 +43,7 @@ public class WorkResource {
 	
 	
 	@PostMapping
-	public ResponseEntity<WorkDTO> insert(@RequestBody WorkDTO dto) {
+	public ResponseEntity<WorkDTO> insert(@Valid @RequestBody WorkDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -50,7 +52,7 @@ public class WorkResource {
 	
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<WorkDTO> update (@PathVariable Long id, @RequestBody WorkDTO dto) {
+	public ResponseEntity<WorkDTO> update (@PathVariable Long id, @Valid @RequestBody WorkDTO dto) {
 		WorkDTO newDTO = service.update(id, dto);
 		return ResponseEntity.ok().body(newDTO);
 	}

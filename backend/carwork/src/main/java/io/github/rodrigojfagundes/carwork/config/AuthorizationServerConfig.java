@@ -28,7 +28,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Value("${security.oauth2.client.client-secret}")
 	private String clientSecret;
 	
-	@Value("{jwt.duration}")
+	@Value("${jwt.duration}")
 	private Integer jwtDuration;
 	
 	@Autowired
