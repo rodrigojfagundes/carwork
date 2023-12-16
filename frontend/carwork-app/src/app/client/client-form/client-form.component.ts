@@ -18,7 +18,7 @@ client: Client;
   ngOnInit(): void {
   }
 
-clicar(){
+onSubmit(){
     console.log(this.client);
 }
 
