@@ -1,0 +1,69 @@
+<h1 class="mt-4">Car</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-bitem active">New</li>
+</ol>
+
+<div class="container">
+    <form #form="ngForm" (submit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-md12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Car save/update with sucess
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Client: </label>
+                    <select class="form-control" [ngModelOptions]="{standalone: true}"
+                     [(ngModel)]="car.clientId">
+                        <option value=""> select ...</option>
+                        <option *ngFor="let client of clients" [ngValue]="client.id">
+                            {{ client.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Model: </label>
+                    <input class="form-control" [(ngModel)]="car.model"
+                     type="text" name="model">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Plate: </label>
+                    <input class="form-control" [(ngModel)]="car.plate" 
+                    type="text" name="plate">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i>
+                    Save
+                </button>
+
+                <button type="button" routerLink="/car-list" class="btn btn-danger ml-1">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Back
+                </button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
