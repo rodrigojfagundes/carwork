@@ -1,34 +1,41 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Client } from "./client/client";
 import { Observable } from "rxjs";
 
-@Injectable ({
+@Injectable({
     providedIn: 'root'
 })
 
 export class ClientService {
 
-constructor(private http: HttpClient) {}
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
 
-insert(client: Client) : Observable<Client> {
-    return this.http.post<Client>('http://localhost:8080/clients', client);
-}
 
-update(client: Client) : Observable<any> {
-    return this.http.put<Client>('http://localhost:8080/clients/${client.id}', client);
-}
+    constructor(private http: HttpClient) { }
 
-findAll() : Observable<Client[]> {
-    return this.http.get<Client[]>('http://localhost:8080/clients');
-}
+    insert(client: Client): Observable<Client> {
+        return this.http.post<Client>('http://localhost:8080/clients', client);
+    }
 
-findById(id: number) : Observable<Client> {
-return this.http.get<any> (`http://localhost:8080/clients`);
-}
+    update(client: Client): Observable<any> {
+        return this.http.put<Client>(`http://localhost:8080/clients/${client.id}`, client);
+    }
 
-delete (client: Client) : Observable<any> {
-return this.http.delete<any>(`http://localhost:8080/clients/${client.id}`);
-}
+    findAll(): Observable<Client[]> {
+        return this.http.get<Client[]>('http://localhost:8080/clients');
+    }
+
+    findById(id: number): Observable<any> {
+        return this.http.get<Client>(`http://localhost:8080/clients/${id}`);
+    }
+
+    delete(client: Client): Observable<any> {
+        return this.http.delete<any>(`http://localhost:8080/clients/${client.id}`);
+    }
 
 }
