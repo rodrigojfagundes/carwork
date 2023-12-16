@@ -7,7 +7,7 @@ export const environment = {
   apiUrlBase: 'http://localhost:8080',
 
   clientId: 'carwork',
-  clientSecret: 'moviesreview123',
+  clientSecret: 'carwork123',
   getTokenUrl: '/oauth/token'
 };
 

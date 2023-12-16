@@ -37,6 +37,13 @@ export class LoginComponent {
             }, HttpErrorResponse => { this.errors = ['User and/or password unknow'] })
     }
 
+
+    prepareRegister(event) {
+        event.preventDefault();
+        this.registering = true;
+    }
+
+
     cancelRegister() {
         this.registering = false;
     }
@@ -62,6 +69,6 @@ export class LoginComponent {
                 this.messageSuccess = null;
                 this.errors = errorResponse.error.errors;
             }
-        )
+            )
     }
 }

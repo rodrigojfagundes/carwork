@@ -13,18 +13,18 @@ import { ResponsePageable } from "./car/responsePageable.model";
 
 export class CarService {
 
-apiURL: string = environment.apiUrlBase + "/cars";
+    apiURL: string = environment.apiUrlBase + "/cars";
 
-constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-insert (car: Car) : Observable<Car> {
-    return this.http.post<Car>('http://localhost:8080/cars', car);
-}
+    insert(car: Car): Observable<Car> {
+        return this.http.post<Car>('http://localhost:8080/cars', car);
+    }
 
-findAll() : Observable<ResponsePageable> {
-return this.http.get<ResponsePageable>('http://localhost:8080/cars');
+    findAll(): Observable<ResponsePageable> {
+        return this.http.get<ResponsePageable>('http://localhost:8080/cars');
 
-}
+    }
 
 
 }

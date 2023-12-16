@@ -14,8 +14,8 @@ import { CarModule } from './car/car.module';
 import { CarService } from './car.service';
 import { WorkModule } from './work/work.module';
 import { WorkService } from './work.service';
-import { LoginComponent } from './login/login.component.ts';
-import { LayoutComponent } from './layout/layout.component.ts';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from './auth.service';
 import { TokenInterceptor } from './token.interceptor';
 

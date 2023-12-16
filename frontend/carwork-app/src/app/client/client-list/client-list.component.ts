@@ -29,7 +29,7 @@ export class ClientListComponent implements OnInit {
     }
 
     newRegister() {
-        this.router.navigate(['/client-form'])
+        this.router.navigate(['/client/form'])
     }
 
     prepareDelete(client: Client) {
