@@ -11,9 +11,9 @@ import { User } from "./login/user";
 export class AuthService {
     apiURL: string = environment.apiUrlBase + "/users"
 
-    tokenURL: string = environment.apiUrlBase + environment.getTokenURL;
+    tokenURL: string = environment.apiUrlBase + environment.getTokenUrl;
     clientID: string = environment.clientId;
-    clientSecret string = environment.clientSecret;
+    clientSecret: string = environment.clientSecret;
     jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(
