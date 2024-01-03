@@ -21,7 +21,7 @@ export class WorkService {
     findAll(): Observable<Work[]> {
         const httpParams = new HttpParams();
         const url = this.apiURL;
-        return this.http.get<Work[]>('http://localhost:8080/works');
+        return this.http.get<Work[]>(this.apiURL);
     }
 
 

@@ -18,11 +18,11 @@ export class CarService {
     constructor(private http: HttpClient) { }
 
     insert(car: Car): Observable<Car> {
-        return this.http.post<Car>('http://localhost:8080/cars', car);
+        return this.http.post<Car>(`${this.apiURL}`, car);
     }
 
     findAll(): Observable<ResponsePageable> {
-        return this.http.get<ResponsePageable>('http://localhost:8080/cars');
+        return this.http.get<ResponsePageable>(this.apiURL);
 
     }
 
