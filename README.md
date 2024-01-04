@@ -3,7 +3,7 @@
 
 ## Projeto: CarWork - Cadastre Clients e associe a esses Clients os seus Cars e informe os Works feitos a esses Cars
 
-### Basicamente é um sistema para criar um usuario com autenticação e esse usuario pode cadastrar um client e esse client pode ter um ou muitos cars e ter um ou muitos works associados a esse car.
+### Basicamente é um sistema para criar um usuário com autenticação e esse usuário pode cadastrar um ou muitos clients e esse client pode ter um ou muitos cars e esse car pode ter um ou muitos works associado a ele.(ManyToOne, OneToMany).
 
 ### Fazendo uso principalmente das tecnologias de Java + Spring e TypeScript + Angular e Bootstrap.
 
